@@ -17,21 +17,30 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
         
+        // O(N)  space | O(N) time
         if(head == null) return null;
         
         Node currentNode = head;
         Map<Node, Node> map = new HashMap<>();
+        // copy node
         while(currentNode != null){
             map.put(currentNode, new Node(currentNode.val));
             currentNode = currentNode.next;
         }
-        currentNode =  head;
+       // currentNode =  head;
         
-        while(currentNode != null){
-            map.get(currentNode).next = map.get(currentNode.next);
-             map.get(currentNode).random = map.get(currentNode.random);
-            currentNode = currentNode.next;
+       // copy next and random 
+        for(Map.Entry<Node, Node> entry: map.entrySet()){
+            Node node = entry.getValue();
+            node.next =map.get(entry.getKey().next);
+            node.random = map.get(entry.getKey().random);
         }
+        
+        // while(currentNode != null){
+        //     map.get(currentNode).next = map.get(currentNode.next);
+        //      map.get(currentNode).random = map.get(currentNode.random);
+        //     currentNode = currentNode.next;
+        // }
         
         return map.get(head);
     }
