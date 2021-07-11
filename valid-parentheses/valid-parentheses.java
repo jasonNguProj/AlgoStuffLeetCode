@@ -3,7 +3,6 @@ class Solution {
         Stack<Character> st = new Stack<>();
         for(char c : s.toCharArray()){
             if(st.isEmpty()) st.push(c);
-            
             else if(c == ')' && st.peek() == '(') st.pop();
             else if(c == '}' && st.peek() == '{') st.pop();
             else if(c == ']' && st.peek() == '[') st.pop();
