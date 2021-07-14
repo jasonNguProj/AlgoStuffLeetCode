@@ -1,34 +1,38 @@
-// use dfs to traverse in  4 dir
-// if arry is 1 call dfs and increment counter by 1
-// also we cnst move when 0 > i, j, and i and j >= grid.length, or 2d! = 1 return
+// we first traverse the rows by col
+// we can solve using dfs recursive 
+// so we will call the recursive fxn in 4 directions
+// if we can complete the four directions we increase count to 1
+// we increment the count when we encounter zeros in all dirstions 
+// we use a visited array to mark when we have passed via ones
+
+//[1,1,0]
+//[0,1,0]
 
 class Solution {
     public int numIslands(char[][] grid) {
         
-        int m = grid.length;
-        int n = grid[0].length;
-        int island = 0;
-        for(int i = 0; i < m; i++){
-            for(int j =0; j < n; j++){
+        int count = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
                 if(grid[i][j] == '1'){
                     dfs(grid, i, j);
-                    island++;
+                count++;
                 }
+                    
             }
         }
-        return island;
-        
+        return count;
     }
     
-    public void dfs(char[][] grid, int i,  int j){
-        if( i< 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') return;
+    public void dfs(char[][] grid, int i , int j){
+        
+        if( i  < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1 || grid[i][j] != '1')
+                return;
         
         grid[i][j] = '0';
-        
-        dfs(grid, i -1, j);
-        dfs(grid, i +1, j);
-        dfs(grid, i, j - 1);
-        dfs(grid, i, j + 1);
-            
+        dfs(grid, i + 1, j);
+        dfs(grid, i - 1, j);
+        dfs(grid, i , j - 1);
+        dfs(grid, i , j + 1);
     }
 }
