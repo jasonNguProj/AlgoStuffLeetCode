@@ -1,12 +1,3 @@
-// we first traverse the rows by col
-// we can solve using dfs recursive 
-// so we will call the recursive fxn in 4 directions
-// if we can complete the four directions we increase count to 1
-// we increment the count when we encounter zeros in all dirstions 
-// we use a visited array to mark when we have passed via ones
-
-//[1,1,0]
-//[0,1,0]
 
 class Solution {
     public int numIslands(char[][] grid) {
