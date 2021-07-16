@@ -16,7 +16,7 @@ class Solution {
             graph.add(new ArrayList<>());
         }
         
-        // here we trav the 2d matrix to build the graph
+        // here we trav the 2d matrix to connect nodes to edges
         for(int[] vals : edges){
             graph.get(vals[0]).add(vals[1]);
         graph.get(vals[1]).add(vals[0]);
