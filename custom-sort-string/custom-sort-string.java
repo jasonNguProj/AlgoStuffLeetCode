@@ -8,7 +8,7 @@
 //rem we traverse we set the bounds less than freq of xtres in hmap
 //we use a linkedHmap because it maintains the order nwhich it was inserted as the question is asking us to maintain that
 
-// the space complexity is O(Longet string) || and time comp 
+// the space complexity is O(Longet string) || and time comp O(smallstring.length + longeststr.length)
 class Solution {
     public String customSortString(String order, String str) {
         
