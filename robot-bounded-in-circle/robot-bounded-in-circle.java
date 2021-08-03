@@ -1,23 +1,39 @@
+/*
+to solve this problem we have to take note of the fact that L and R 
+are just directions and then G is the direction
+at the end if the robot comes back to the origin that is (0,0) hence it never leaves the cirle
+so there are couple of ways the bot move 
+
+       
+                        
+                        
+                        
+                        |up(0, 1)  -left (-1, 0), down(0, -1), right(1, 0)
+                        we create a varible i that indicates hw we move
+                        and to avoid index out od bound exception and our arr is 4 directions we do (i + 1)
+                        1 rep the pos of left or right
+
+*/
+
+
 class Solution {
-    // O(N) time | O(1) space because the extra array of 4 directions will always be 4
-    // regardless if a string is of length 17, 18, 20 
     public boolean isRobotBounded(String instructions) {
         
-        int dir[][] = {{0,1}, {-1,0}, {0, -1}, {1, 0}};
-        int b = 0;
-        int x = 0; 
-        int y = 0;
+        int[][] dir = {{0, 1}, {-1, 0}, {0, -1}, {1,0}};
         
-        for(int i =0; i < instructions.length(); i++){
+        int a = 0 , x =0, y =0;
+        
+        for(int i = 0; i < instructions.length(); i++){
             if(instructions.charAt(i) == 'L'){
-                b = (b + 1) % 4;
+                a = (a + 1) % 4;
             } else if(instructions.charAt(i) == 'R'){
-                  b = (b + 3) % 4;
+                a = (a + 3) % 4;
             } else {
-                x = x + dir[b][0];
-                y = y + dir[b][1];
+                x += dir[a][0];
+                y += dir[a][1];
             }
         }
-        return x == 0 && y == 0 || b > 0; 
+        
+        return x == 0 && y == 0 || a > 0;
     }
 }
