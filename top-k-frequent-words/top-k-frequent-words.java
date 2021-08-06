@@ -23,6 +23,7 @@ class Solution {
         PriorityQueue<Map.Entry<String, Integer>> maxHeap = new PriorityQueue<>(
             (e1, e2) -> e1.getValue() == e2.getValue() ? e1.getKey().compareTo(e2.getKey()) : e2.getValue() - e1.getValue());
         maxHeap.addAll(map.entrySet());
+        
         while(k > 0 && !maxHeap.isEmpty()){
                 result.add(maxHeap.poll().getKey());
             k--;
