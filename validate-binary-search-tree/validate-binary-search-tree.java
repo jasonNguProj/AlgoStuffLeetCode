@@ -18,7 +18,8 @@ at the beginning it is said that a null node is a valid bst bcus its btwn min, m
 to check if a tree is valid we have to check withing a range
 the range we check is between int min and int max value 
 if the tree value are between this range we return true else false
-*/
+it takes O(N) time since we visit every node exactly once | and O(H) Space the height of our recursive stack
+ */
 class Solution {
     public boolean isValidBST(TreeNode root) {
         return checkNode(root, Long.MIN_VALUE, Long.MAX_VALUE);
