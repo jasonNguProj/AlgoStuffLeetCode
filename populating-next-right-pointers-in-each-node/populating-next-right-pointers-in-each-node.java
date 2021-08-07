@@ -29,7 +29,7 @@ O(N) time | O(1) space because we ignore the space of the recursive stack
 class Solution {
     public Node connect(Node root) {
         
-        if(root == null) return null;
+        if(root == null) return root;
         
         if(root.left != null) root.left.next = root.right;
         if(root.right !=null && root.next!= null) root.right.next = root.next.left;
