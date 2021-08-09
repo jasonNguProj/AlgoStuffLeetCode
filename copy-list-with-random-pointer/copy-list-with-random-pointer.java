@@ -12,35 +12,34 @@ class Node {
     }
 }
 */
-// copy the linked list
-// reassign the next and random nodes
+
+
+/*
+
+to solve this question we have to do two things
+we have to put our original againgst our copy in the map which
+in essense is creating a new node
+we now have to reassign our next and random pointer
+and in the end we return our value section of hash map
+time is O(N) | space is O(1) because we are storing sme nodes and they are not new nodes 
+
+*/
 class Solution {
     public Node copyRandomList(Node head) {
         
-        // O(N)  space | O(N) time
-        if(head == null) return null;
-        
-        Node currentNode = head;
-        Map<Node, Node> map = new HashMap<>();
-        // copy node
-        while(currentNode != null){
-            map.put(currentNode, new Node(currentNode.val));
-            currentNode = currentNode.next;
+        Node current = head;
+        HashMap<Node, Node> map= new HashMap<>();
+        while(current != null){
+            map.put(current, new Node(current.val));
+                current = current.next;
         }
-       // currentNode =  head;
+        //current = head;
         
-       // copy next and random 
-        for(Map.Entry<Node, Node> entry: map.entrySet()){
+        for(Map.Entry<Node, Node> entry : map.entrySet()){
             Node node = entry.getValue();
-            node.next =map.get(entry.getKey().next);
+            node.next = map.get(entry.getKey().next);
             node.random = map.get(entry.getKey().random);
         }
-        
-        // while(currentNode != null){
-        //     map.get(currentNode).next = map.get(currentNode.next);
-        //      map.get(currentNode).random = map.get(currentNode.random);
-        //     currentNode = currentNode.next;
-        // }
         
         return map.get(head);
     }
