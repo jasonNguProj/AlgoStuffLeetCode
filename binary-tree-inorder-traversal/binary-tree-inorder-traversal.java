@@ -17,6 +17,7 @@
 inordeer traversal we first check the left tree 
 the add the value
 then check right subtree;
+O(N) time cus we traverse via each node in the tree to get its value| O(H) space because of the recursive stack
 
 
 
@@ -33,8 +34,8 @@ class Solution {
     public void inorderTraversal(TreeNode root, List<Integer> res){
         
         if(root == null) return;
-        if(root.left != null) inorderTraversal(root.left, res);
+       inorderTraversal(root.left, res);
         res.add(root.val);
-        if(root.right != null) inorderTraversal(root.right, res);
+        inorderTraversal(root.right, res);
     }
 }
