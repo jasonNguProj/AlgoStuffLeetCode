@@ -15,6 +15,8 @@ so we traverse via our listnode and then update position
 then we traverse via our heap while its size is greter than xero we add into our dummy 
 then return our dummy.next 
 
+O(N log k) time | O(k) space because of 
+
 */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
@@ -27,7 +29,7 @@ class Solution {
             }
         }
         
-        ListNode dummy = new ListNode();
+        ListNode dummy = new ListNode(0);
         ListNode current = dummy;
         while(minHeap.size() > 0){
             current.next = new ListNode(minHeap.poll());
