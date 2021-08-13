@@ -2,6 +2,7 @@
 to solve this question i will create a hasmap and put each key inside
 and given the string traverse through it search in out map 
 and return the value
+O(N) time | O(1) space since the roman nummrals will always be constant
 
 */
 
@@ -31,7 +32,8 @@ class Solution {
                   if(i > 0 && s.charAt(i - 1) == 'C')
                     sum -= 200;
             }
-            sum += map.get(s.charAt(i));
+            char num =s.charAt(i);
+            sum += map.get(num);
               
         }
         return sum;
