@@ -15,6 +15,7 @@ to solve this qxn we will use the 2 ptr approach
 if the lengths are same we move them 1 value to the next
 but when the lengths are diff , and then ptr a has reached null we reassign pointer a to head b 
 and vica versa
+time is O(N + M) | space is O(1)
 
 */
 public class Solution {
@@ -26,7 +27,7 @@ public class Solution {
             p1 = p1 == null ? headB : p1.next;
              p2 = p2 == null ? headA : p2.next;
         }
-        return p2;
+        return p1;
         
     }
 }
