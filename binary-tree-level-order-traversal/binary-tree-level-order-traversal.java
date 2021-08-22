@@ -13,31 +13,28 @@
  *     }
  * }
  */
-
-/*
-to solve this qxn easily we will use recursion
-so do a dfs preorder traverse lvel by level
-recursively call fxn on left subtree then sum the level with 1 since we are going one step 
-down
-initialy our level is 0
-O(N) time | O(H) because of the height of recursive stack
-
-
-*/
 class Solution {
-    List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> levelOrder(TreeNode root) {
+        
+        List<List<Integer>> result =  new ArrayList<>();
         if(root == null) return result;
-        dfs(root, 0);
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> res = new ArrayList<>();
+            
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll();
+                res.add(node.val);
+                
+                if(node.left != null ) queue.offer(node.left);
+                 if(node.right != null ) queue.offer(node.right);
+            }
+            result.add(res);
+        }
         return result;
-    }
-    
-    private void dfs(TreeNode root, int level){
-        
-        if(result.size() == level) result.add(new ArrayList<>());
-        
-        result.get(level).add(root.val); 
-        if(root.left != null) dfs(root.left, level + 1);
-         if(root.right != null) dfs(root.right, level + 1);
     }
 }
