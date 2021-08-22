@@ -13,48 +13,34 @@
  *     }
  * }
  */
-
-/*
-to solve this qxn optimaly we will use BFS 
-and traverse each level using a queue
-and then set direction at the begin to true 
-because we are going in zigzag manner 
-so if true it should just add left first
-add right first when dir is fals e
-
-
-
-*/
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         
         List<List<Integer>> result = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        boolean direction = true;
         if(root == null) return result;
-        
+        boolean direction = true;
+        Queue<TreeNode> queue =  new LinkedList<>();
         queue.offer(root);
+        
         while(!queue.isEmpty()){
             int size = queue.size();
-            List<Integer> level = new ArrayList<>(size);
+            List<Integer> res = new ArrayList<>();
+            
             for(int i = 0; i < size; i++){
-                TreeNode current = queue.poll();
+                TreeNode node = queue.poll();
                 
                 if(direction){
-                   level.add(current.val);  
-                } else{
-                    level.add(0, current.val);
+                    res.add(node.val);
+                } else {
+                    res.add(0, node.val);
                 }
                 
-                if(current.left != null) queue.offer(current.left);
-                if(current.right != null) queue.offer(current.right);
-                
-               
+                if(node.left != null) queue.offer(node.left);
+                if(node.right != null) queue.offer(node.right);
             }
-            result.add(level);
-             direction = !direction;
+            result.add(res);
+            direction = !direction;
         }
-        
         return result;
     }
 }
