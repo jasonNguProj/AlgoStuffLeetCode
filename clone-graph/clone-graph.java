@@ -19,30 +19,40 @@ class Node {
 */
 
 /*
-to solve this question we will use a hasp map to keep track of the orinal graph
-as key and clone as value 
-if we already visited a node we just return that clone
-else we create the clone 
-then traverse via neighbors in a tree getting each clone and put in the map 
-done recursively
+
+to solve this problem we will use a hmap to keep track of 
+node as key and neighbor as value
+note that a node contains a value and list of neighbors
+so we traverse via bfs if not present add into visited
+and into queuue  if present we get the neigbors clone and add its clone 
+into the clone neighbor list
 
 */
+
 class Solution {
-    
-    HashMap<Node, Node> map = new HashMap<>();;
     public Node cloneGraph(Node node) {
-        if(node == null) return null;
-        if(map.containsKey(node)){
-            return map.get(node);
+        
+        if(node == null) return node;
+        Map<Node, Node> map = new HashMap<>();
+        map.put(node, new Node(node.val, new ArrayList<>()));
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(node);
+        
+        while(!queue.isEmpty()){
+            Node n = queue.poll();
+            
+            for(Node neighbor : n.neighbors){
+                if(!map.containsKey(neighbor)){
+                    map.put(neighbor, new Node(neighbor.val, new ArrayList<>()));
+                        queue.offer(neighbor);
+                }
+                // here we adding our neighbors clone to our neighbors
+                // noote that neighbor is our value in a hashmap
+                // so we are gting the polled nodes neighbors and adding it clone
+                map.get(n).neighbors.add(map.get(neighbor));
+            }
         }
+        return map.get(node);
         
-        Node clone = new Node(node.val, new ArrayList<>());
-        map.put(node, clone);
-        
-        for(Node neighbor: node.neighbors){
-            clone.neighbors.add(cloneGraph(neighbor));
-        }
-        
-        return clone;
     }
 }
