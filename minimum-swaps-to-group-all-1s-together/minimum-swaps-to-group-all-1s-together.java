@@ -1,38 +1,30 @@
 /*
-
-so basically we use sliding the window tecknic
-first we sum all the nums in the array as my window
-and have a left and right ptr
-we move the right ptr along as we grow the window
-whenever r -l > window size
-we shrinck the left
-int the end the it will be window size - maxOnes sofar
-O(N) time | O(1) time 
+to solve this problem we will use sliding the indow teknik
+where our k will be the sum of 1's then we will remove or add
+by the time our sum is greter than our window then we substract the start
 
 */
 
 class Solution {
     public int minSwaps(int[] data) {
         
-        int windowSize = 0;
-        for(int i = 0; i < data.length; i++){
-            windowSize += data[i];
-        }
+        int sum = 0;
+        for(int num : data)
+            sum += num;
         
-        int start = 0, end = 0, max =0, maxSofar = 0;
+        
+        int start = 0, end = 0, minSwap = 0, currWin = 0; 
         
         while(end < data.length){
-            max += data[end++];
-            if(end - start > windowSize)
-            {
-               max -= data[start++];
+            minSwap += data[end];
+            if(end - start + 1> sum){
+                minSwap -= data[start];
+                start++;
             }
-            
-           maxSofar = Math.max(max, maxSofar);
+            currWin = Math.max(minSwap, currWin);
+            end++;
         }
+        return sum - currWin;
         
-        return windowSize - maxSofar;
     }
-    
-    
 }
