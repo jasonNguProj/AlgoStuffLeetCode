@@ -7,7 +7,7 @@ we move the right ptr along as we grow the window
 whenever r -l > window size
 we shrinck the left
 int the end the it will be window size - maxOnes sofar
-
+O(N) time | O(1) time 
 
 */
 
@@ -28,7 +28,7 @@ class Solution {
                max -= data[start++];
             }
             
-            maxSofar = Math.max(max, maxSofar);
+           maxSofar = Math.max(max, maxSofar);
         }
         
         return windowSize - maxSofar;
