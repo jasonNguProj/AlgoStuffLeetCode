@@ -26,7 +26,6 @@ O(N) in the worst case if we traverse the whole tree
 and O(N) space in the worst case for a skewed tree and o(log n) in the av case for a balanced tree
 */
 class Solution {
-    boolean ans = true;
     public boolean isBalanced(TreeNode root) {
         if(root == null) return true;
         if(Math.abs(computeHeight(root.left) - computeHeight(root.right)) > 1) return false;
