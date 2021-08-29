@@ -13,31 +13,31 @@
  *     }
  * }
  */
-//Using bfs trvarse via every level
-// and add in the left and right tree
-// also have a running sum
+
+/*
+to solve this problem since we are summing up
+the leaves at the last level we can use a level order 
+traversal , and reset the sum to 0 each time and return the last sum of the last level
+*/
 class Solution {
     public int deepestLeavesSum(TreeNode root) {
-        if(root == null){
-            return 0;
-        }
-        Queue<TreeNode> qu = new LinkedList<>();
-        qu.offer(root);
-        int sumOfCurrLevel = 0;
-        while(!qu.isEmpty()){
-            int size = qu.size();
-            sumOfCurrLevel = 0;
-            while(size-->0){
-                TreeNode head = qu.poll();
-                sumOfCurrLevel += head.val;
-                if(head.left!=null){
-                    qu.offer(head.left);
-                }
-                if(head.right!=null){
-                    qu.offer(head.right);
-                }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        int res = 0;
+        while(!queue.isEmpty()){
+            int sum = 0;
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode current = queue.poll();
+                sum += current.val;
+                
+                if(current.left != null) queue.offer(current.left);
+                if(current.right != null) queue.offer(current.right);
             }
+            res = sum;
         }
-        return sumOfCurrLevel ;
+        return res;
     }
 }
