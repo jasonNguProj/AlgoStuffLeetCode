@@ -15,25 +15,32 @@
  */
 
 /*
-to solve this question we will solve it recursively
-and find the max btw the diameter and left + right
-then at every node to find diameter is the max btw lft and right + 1 (because of its parent node)
-
+to solve this problem we need the height which will give us
+the max btw left and right, and then from there we use the information
+from the height to update the daiameter
+so when you are at say 4   
+                       | 2
+                       
+ int the above notice that the left is null and the right is 1
+ so in the recursion stack we return the max(l, r) which is essentialy 
+ the right then add 1 as the level
+ and then here the diameter is 2
+ so basically at each level while going up 
+ it need information from the computed height , then we take 
+ the max of the 2 leaf and add 1(the 1 is for the parent)
 */
 class Solution {
-    int diameter;
+    int diameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        diameter = 0;
-        computeDiameter(root);
-        return diameter;  
+        computeHeight(root);
+        return diameter;
     }
     
-    public int computeDiameter(TreeNode root) {
+    private int computeHeight(TreeNode root){
+        if(root == null) return 0;
         
-        if (root == null) return 0;
-        
-        int left = computeDiameter(root.left);
-        int right = computeDiameter(root.right);
+        int left = computeHeight(root.left);
+        int right = computeHeight(root.right);
         
         diameter = Math.max(diameter, left + right);
         
