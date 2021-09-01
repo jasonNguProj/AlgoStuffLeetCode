@@ -43,6 +43,10 @@ class Solution {
             return;
         }
         
+        
+         if( i ==0 || j == 0 || i == grid.length-1 || j== grid[i].length-1){
+             visited[i][j] = false;
+         }
        
        
         
