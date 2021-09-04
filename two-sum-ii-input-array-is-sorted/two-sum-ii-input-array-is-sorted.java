@@ -1,30 +1,28 @@
+/*
+to solve this problem we'll use 2 ptr approach
+wehn ever the vals is greater than target we decre end when its smaller we increment  start
+O(N) time | O(1) space
+
+*/
+
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
         
-//          Map<Integer, Integer> map = new HashMap<>();
+        int start = 0;
+        int end = numbers.length - 1;
         
-//         for(int i = 1; i <= numbers.length-1; i++){
-//             int potentialMatch = target - numbers[i];
-//             if(map.containsKey(potentialMatch)){
-//                 return new int[] {map.get(potentialMatch), i};
-//             }else {
-//                 map.put(numbers[i], i);
-//             }
-//         }
-//         return new int[] {-1, -1};
-        
-        int start = 0, end = numbers.length - 1;
-        while(start <= end){
-            int potentialSum = numbers[start] + numbers[end]; 
+        while(start < end){
+            int potentialSum = numbers[start] + numbers[end];
+            
             if(potentialSum == target){
                 return new int[] {start + 1, end + 1};
-            } else if (potentialSum > target){
+            } else if(potentialSum > target){
                 end--;
-            }else{
-                start++;
-            }
+            } else if (potentialSum < target){
+            start++;
         }
-        return new int[]{-1, -1};
-        
+            
     }
+return new int[]{-1, -1};
+  }
 }
