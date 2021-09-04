@@ -7,6 +7,8 @@ number of edges changed , so given the input we build the graph and traverse
 in a preorder dfs manner;
 to build graph we need to first rep graph we need to trav the list and add 
 the list into our graph list , connect the edges 
+
+time is O(V + E) || Space is O(V + E) 
 */
 
 class Solution {
@@ -33,9 +35,9 @@ class Solution {
         int count = 0;
         visited[start] = true;
         
-        List<Integer> children = graph.get(start);
+        //List<Integer> children = graph.get(start);
         
-        for(Integer child : children){
+        for(Integer child : graph.get(start)){
             
             if(!visited[Math.abs(child)])
             count += dfs(Math.abs(child), graph, visited) + (child > 0 ? 1 : 0);
