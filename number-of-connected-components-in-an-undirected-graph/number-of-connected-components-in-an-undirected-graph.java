@@ -1,48 +1,43 @@
+/*
+to solve this question i will build the graph and traverse the graph in a dfs 
+manner and keep a count variable and then return the count
+*/
+
 class Solution {
-    // first let me build the graph
-    // add thedge and vertices to the graph using an adjacencyList
-    // and traverse BFS manner to store the nodes in queue
     public int countComponents(int n, int[][] edges) {
-        
         List<List<Integer>> graph = new ArrayList<>();
-        for(int i = 0; i < n; i++){
-            graph.add(i, new ArrayList<>());
-        }
-        
-        
-        for(int[] edge : edges){
-            graph.get(edge[0]).add(edge[1]);
-             graph.get(edge[1]).add(edge[0]);
-        }
-        
-        Set<Integer> visited = new HashSet<>();
+        boolean[] visited = new boolean[n];
         int count = 0;
         
-        for(int i = 0; i < n ; i++){
-            if (!visited.contains(i)){
-                bfs(graph, i, visited);
+        for(int i = 0; i < n; i++){
+            graph.add(new ArrayList<>());
+        }
+        
+        for(int[] e : edges){
+            graph.get(e[0]).add(e[1]);
+             graph.get(e[1]).add(e[0]);
+        }
+        
+         for(int i = 0; i < n; i++){
+            if(!visited[i]){
+                dfs(graph, visited, i);
                 count++;
-            }
+            }   
         }
         
         return count;
     }
     
-    public void bfs(List<List<Integer>> graph, int i,  Set<Integer> visited){
+    private void dfs(List<List<Integer>> graph, boolean[] visited , int start){
         
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(i);
-        visited.add(i);
         
-        while(!queue.isEmpty()){
-            int node = queue.poll();
-            
-            for(int neighbors : graph.get(node)){
-                if(!visited.contains(neighbors)){
-                    visited.add(neighbors);
-                    queue.offer(neighbors);
-                }
-            }
+        visited[start] = true;
+        
+        for(Integer child : graph.get(start)){
+            if(!visited[child]){
+                dfs(graph, visited, child);
+            }   
         }
+        
     }
 }
