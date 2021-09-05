@@ -1,32 +1,31 @@
 /*
-
-
-to solve this problem we will begin adding from the back
-so we will need 3 pointers p1 for arr 1 , p2 for arr 3
-and p for the place we will update in the big array
-and we will terminate when p2 is done 
-
+to solve this question we will need to start adding elements 
+from the end of arr one and then decrements the indices from 
+arr1 and arr2, and add into array if the  val at arr2 is greater than
+the value at idx2 in arr1, and then we also need to check a case where 
+there can be an element in arr2 smaller than an element in arr1
 
 
 */
 
+
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         
-        int p1 = m -1, p2 = n - 1, p = m + n -1;
+        int idxOne = m - 1, idxTwo = n - 1, idxEnd = m + n - 1;
         
-        while(p2 >= 0){
-            if(p1 >= 0 && nums1[p1] > nums2[p2]){
-               nums1[p] = nums1[p1]; 
-                p--;
-                p1--;
-                
-            }else {
-                    nums1[p] = nums2[p2];  
-                
-                p--;
-                p2--;
+        while(idxOne  >= 0 && idxTwo >= 0){
+            
+            if(nums1[idxOne] >= nums2[idxTwo]){
+                nums1[idxEnd--] = nums1[idxOne--];
+            } else {
+                nums1[idxEnd--] = nums2[idxTwo--];
             }
         }
+        
+        while (idxTwo >= 0){
+             nums1[idxEnd--] = nums2[idxTwo--];
+        }
+        
     }
 }
