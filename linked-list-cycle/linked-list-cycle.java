@@ -11,21 +11,23 @@
  */
 
 /*
-to check if a list haas a cycle is by using the fast and slow ptr
-wher slow moves by 1 and fast moves by two if evr the slow and fast meets hence there is a cycle 
+to solve this problem , we will set two pointers one that moves at rate one and another that moves
+at rate 2, if ever both pointers meet there will be a cycle
 
 */
 public class Solution {
     public boolean hasCycle(ListNode head) {
         
-        ListNode fast = head;
-         ListNode slow = head;
+        ListNode slow = head;
+         ListNode fast = head;
         
-        while(fast != null && fast.next != null){
-            fast = fast.next.next;
+        while( fast != null && fast.next != null){
             slow = slow.next;
-            if(fast == slow) return true;
+            fast = fast.next.next;
+            
+            if(slow == fast) return true;
         }
-    return false;
+        
+        return false;
     }
 }
