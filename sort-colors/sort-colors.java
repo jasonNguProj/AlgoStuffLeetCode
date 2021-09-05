@@ -1,21 +1,18 @@
-
 /*
-to solvethis problem i will create a swap fxn 
-that will swap when not in place 
-
+to solve this qxn we need to sort o, and 2 
+and the end 1 wil be in its correct position
 
 */
 
 class Solution {
     public void sortColors(int[] nums) {
+        int start = 0, end = nums.length - 1, i =0;
         
-       int zeroIndex = 0, twoIndex = nums.length - 1, i = 0;
-        
-        while(i <= twoIndex){
-            if (nums[i] == 0) swap(nums, i++, zeroIndex++);
-            else if(nums[i] == 2) swap(nums, i, twoIndex--);
-            else i++;
-        }
+        while(i <= end){
+            if(nums[i] == 0) swap(nums, i++, start++);
+            else if(nums[i] == 2) swap(nums, i, end--);
+            else if(nums[i] == 1) i++;
+        }    
     }
     
     public void swap(int[] nums, int i, int j){
