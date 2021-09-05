@@ -1,23 +1,25 @@
-
 /*
-we can solve this problem by using an extra array and then 
+to solve this question we will use 
+one pointer to add numbers in the
+that are not zero, then when finish placing those
+we add 0 to the ones at the end
 
 */
+
 class Solution {
     public void moveZeroes(int[] nums) {
-    if (nums == null || nums.length == 0) {
-        return;
-    }
-    
-    int cur = 0;
-
-    for (int i = 0; i < nums.length; ++i) {
-        if (nums[i] != 0) {
-            int temp = nums[cur];
-            nums[cur++] = nums[i];
-            nums[i] = temp;
+        
+        int idx = 0;
+        
+        for(int num : nums){
+            if(num != 0){
+                nums[idx++] = num;
+            }
         }
-    }
+        
+        while(idx < nums.length){
+            nums[idx++] = 0;
+        }
+        
     }
 }
-
