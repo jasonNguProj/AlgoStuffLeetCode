@@ -5,6 +5,7 @@ arr1 and arr2, and add into array if the  val at arr2 is greater than
 the value at idx2 in arr1, and then we also need to check a case where 
 there can be an element in arr2 smaller than an element in arr1
 
+space O(1) | time O(M + N);
 
 */
 
