@@ -10,7 +10,7 @@ class Solution {
         
         while(i <= end){
             if(nums[i] == 0) swap(nums, i++, start++);
-            else if(nums[i] == 2) swap(nums, i, end--);
+           else if(nums[i] == 2) swap(nums, i, end--);
             else if(nums[i] == 1) i++;
         }    
     }
