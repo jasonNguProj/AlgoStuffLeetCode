@@ -26,8 +26,12 @@ class Solution {
             }
             
             if (Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))) return false;
-            start++;
-            end--;   
+            
+             if (Character.toLowerCase(s.charAt(start)) == Character.toLowerCase(s.charAt(end))){
+                 start++;
+            end--; 
+             }
+              
         }
         return true ;
     }
