@@ -38,9 +38,9 @@ class Solution {
     public int computHeight(TreeNode root){
         if(root == null) return 0;
         
-        int left = computHeight(root.left);
-        int right = computHeight(root.right);
+        int left = computHeight(root.left) + 1;
+        int right = computHeight(root.right) + 1;
         
-        return Math.max(left, right) + 1;
+        return Math.max(left, right);
     }
 }
