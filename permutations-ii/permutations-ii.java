@@ -23,12 +23,12 @@ class Solution {
         else{
             for (int i = 0; i < nums.length; i++){
                 if (used[i] == true) continue;
-                if (i > 0 && nums[i] == nums[i - 1] && used[i -1] == false) continue;
+                if (i > 0 && nums[i] == nums[i - 1] && used[i -1] == true) continue;
                  permutations.add(nums[i]);
                 used[i]= true;
                 computePermutations(result, permutations, nums, used);
-                used[i] = false;
                 permutations.remove(permutations.size() - 1);
+                 used[i] = false;
             }
         }
     }
