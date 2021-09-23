@@ -29,9 +29,9 @@ O(D) space cus of recursive stack  of d depth of hw far the recursive stack goes
 
 
 class Solution {
-    int goodNode;
+    int goodNode =0;
     public int goodNodes(TreeNode root) {
-       // goodNode = 0;
+       
         dfs(root, Integer.MIN_VALUE);
         return goodNode;
         
