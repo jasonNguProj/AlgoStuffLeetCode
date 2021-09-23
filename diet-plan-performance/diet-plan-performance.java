@@ -16,7 +16,7 @@ class Solution {
         int point =0, start = 0, end = 0, totalSum = 0;
         while(end < calories.length){
             totalSum += calories[end];
-            if(end - start + 1 == k){
+            if(end - start + 1 >= k){
                 if(totalSum > upper) point++;
                 if(totalSum < lower) point--;  
                  totalSum -= calories[start]; 
