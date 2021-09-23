@@ -18,18 +18,19 @@ class Solution {
     }
     
     private void  computePermutations(List<List<Integer>> result, List<Integer> permutations, int[] nums, boolean [] used){
-        if (nums.length == permutations.size()) 
+        if (nums.length == permutations.size()){
             result.add(new ArrayList<>(permutations));
-        else{
+            return;   
+        }
             for (int i = 0; i < nums.length; i++){
                 if (used[i] == true) continue;
-                if (i > 0 && nums[i] == nums[i - 1] && used[i -1] == true) continue;
+                if (i > 0 && nums[i] == nums[i - 1] && used[i -1] == true ) continue;
                  permutations.add(nums[i]);
                 used[i]= true;
                 computePermutations(result, permutations, nums, used);
                 permutations.remove(permutations.size() - 1);
                  used[i] = false;
             }
-        }
+        
     }
 }
