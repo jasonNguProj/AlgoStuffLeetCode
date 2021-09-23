@@ -30,7 +30,7 @@ class Solution {
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
         while(!queue.isEmpty()){
-             
+              
             int size = queue.size();
             for(int i = 0; i < size; i++){
                  Node node = queue.poll();
@@ -38,7 +38,7 @@ class Solution {
                 queue.offer(child);
             }
             }
-           depth++;
+          depth++;
         }
         return depth;
         
