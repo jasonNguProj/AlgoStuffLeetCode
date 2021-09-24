@@ -18,7 +18,7 @@ class Solution {
         Deque<Character> queue = new ArrayDeque<>();
         
         for(char c : s.toCharArray()){
-            if(queue.isEmpty()) queue.offer(c);
+            if(queue.isEmpty()) queue.push(c);
             else if(c == ')'  && queue.peek() == '(') queue.poll();
              else if(c == '}'  && queue.peek() == '{') queue.poll();
              else if(c == ']'  && queue.peek() == '[') queue.poll();
