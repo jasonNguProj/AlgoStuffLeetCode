@@ -1,23 +1,25 @@
 /*
-to solve this problem we will utilise kadanes
-and always keep track of max so we take the bigger btw 2 vals and continue and in the end
-return our bimax
-O(N) Time | O(1) Space
 
+to solve this question we need to understand that
+its a kadane type problem where we keep track of the 
+curr and max nums in the array as curr vals
+and update the current to be the greater value btw our curr and 
+sum of our curr and present num
+and then update our max from our max and curr and then in the end return max 
 
 */
 
 class Solution {
     public int maxSubArray(int[] nums) {
         
-        int currMax =nums[0];
-        int bigMax = nums[0];
+        int start = nums[0], largest = nums[0];
         
         for(int i = 1; i < nums.length; i++){
-            int val = nums[i];
-            currMax = Math.max(val, currMax + val);
-            bigMax = Math.max(currMax, bigMax);
+            start = Math.max(nums[i], nums[i] + start);
+            largest = Math.max(start, largest);
         }
-        return bigMax;
+        
+        return largest;
+        
     }
 }
