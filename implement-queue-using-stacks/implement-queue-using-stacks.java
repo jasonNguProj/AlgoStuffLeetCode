@@ -22,9 +22,12 @@ class MyQueue {
     // the front of output
     /** Get the front element. */
     public int peek() {
-        if(output.isEmpty())
-             while(!input.isEmpty())
-                output.push(input.pop());
+        if(output.isEmpty()){
+            while(!input.isEmpty()){
+                  output.push(input.pop());
+             }
+        }
+             
                 return output.peek();
        
            
