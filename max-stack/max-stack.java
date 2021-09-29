@@ -2,6 +2,7 @@
 to solve this qxn we'll use a maxHeap and dequeue
 maxHeap to get max of elements and deque as it can be used as queue fifo
 or stack lifo
+we use the maxHeap for max operations, and the other operations we use deque
 
 */
 
