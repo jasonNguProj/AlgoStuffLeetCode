@@ -5,9 +5,14 @@ we will use buckets , meaning an array with linked list at a particular position
 and the size of the array linkedlist will be a huge prime number say 2069\
 then we need to prov a hsh fxn that will rep the index for us to store our entry
 so we will create an entry class of key ,value in which we store our elements
-or hashmaps as entries into our arry
+or hashmaps as entries into our array
 
+so this will be o(n/k) time comp n = num of key
+k = number of buckets so it is n/k due to the fact that the keys are evenly distrubted
+as a result we could coinder as an average the size of buckets to be N/K
 
+Space complexity is O(K + M) k = buckets, M = unique keys
+this is so because we strore our unique keys and buckets in the hashMap
 
 */
 
