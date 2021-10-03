@@ -10,7 +10,7 @@ we use the maxHeap for max operations, and the other operations we use deque
 class MaxStack {
 
     PriorityQueue<Integer> maxHeap  = new PriorityQueue<Integer>((e1, e2) -> e2 - e1);
-    Deque<Integer> deque = new LinkedList<>();
+    Deque<Integer> deque = new ArrayDeque<>();
     /** initialize your data structure here. */
     public MaxStack() {
       
