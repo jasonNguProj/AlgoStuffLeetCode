@@ -3,6 +3,8 @@ to solve this qxn optimaly we will need a hashmap to trackof unique tweetss
 and inside the mad we need unique time intervala againg count of tweets in that interval
 then we add into our list then traverse the list 
 the values in the list will be our tweet count 
+space is O(N)| FOR record is O(LOG N) TIMe | 
+for gettweetCount is O(K log N); N num of unique time and then k num of interval .
 */
 
 class TweetCounts {
