@@ -49,7 +49,8 @@ class LRUCache {
         if(map.size() >= capacity){
             remove(tail.prev);
         }
-        insert(new Node(key, value));
+        Node entry = new Node(key, value);
+        insert(entry);
         
     }
     
@@ -58,8 +59,9 @@ class LRUCache {
         Node headNext = head.next;
         head.next = node;
         node.prev = head;
-        headNext.prev = node;
+       
         node.next = headNext;
+         headNext.prev = node;
     }
     
      public void remove(Node node){
