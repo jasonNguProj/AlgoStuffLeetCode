@@ -35,7 +35,7 @@ class MyQueue {
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        return input.isEmpty() && output.isEmpty();
+        return input.isEmpty() && output.isEmpty() ? true : false;
     }
 }
 
