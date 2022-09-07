@@ -26,7 +26,7 @@ class Solution {
         
        // base case
         
-        if (n <= 1) return n;
+        if (n < 2) return n;
         
         
         // cache some values we already know, so basically sub problems
