@@ -8,60 +8,64 @@
  * }
  */
 /*
-to solve this problem firstly convert the tree into a graph
-to get information of the parent because when we have info
-parent will be a map containing either its left n right child
-of the parent we can easily calc dist
-then now we do a bfs using our target as start
-since we are potentially traversing as though it was a graph 
-we need a visted flag for visited nodes 
-then we traverse the tree whenever we poll we check if its null or in our visited set
-we continue and add node to visited also add nodes when ever the level ,
-while travelling level is k then we add into our list 
-O(N) Space-Time complexity
+to solve this question we need information from our parent node
+inoder to cal distance to children, and vice versa, 
+so we need to conv the tree into an undirected graph
+firstly we will conv the tree into graph via dfs preorder to build the tree 
+then when ever our level is equal to our k, vlue because in essence we need to
+return list of values that are at a dist k from target, meaning whenever our current levl is equal k, 
+from target we just add values into our result list
+so we need to first conv the tree into a graph
+then travrse in a bfs manner, taken into cons that
+its a graph, and we also have parent nodes 
+O(N) space-time complexity, because we traverse the nodes, and use various ds
 
 */
 class Solution {
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         
-        List<Integer> res = new ArrayList<>();
-        if(root == null) return res;
+        List<Integer> result = new ArrayList<>();
         
-        HashMap<TreeNode, TreeNode> parent = new HashMap<>();
-        dfs(root, parent);
+        if(root == null) return result;
+        Map<TreeNode, TreeNode> parent = new HashMap<>();
+        
+        
         Set<TreeNode> visited = new HashSet<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(target);
+        
+            dfs(root, parent);
+            queue.offer(target);
         int level = 0;
         
         while(!queue.isEmpty()){
             int size = queue.size();
             for(int i = 0; i < size; i++){
-                TreeNode node = queue.poll();
                 
-                if(node == null || visited.contains(node)) continue;
+                TreeNode current = queue.poll();
                 
-                visited.add(node);
+                if(current == null || visited.contains(current)) continue;
+                visited.add(current);
                 
-                if(level == k){
-                    res.add(node.val);
-                }
-                queue.offer(node.left);
-                 queue.offer(node.right);
-                 queue.offer(parent.get(node));
+                if(level == k) result.add(current.val);
+                
+                 queue.offer(current.left);
+                 queue.offer(current.right);
+                queue.offer(parent.get(current));
             }
             level++;
         }
-        return res;
+        return result;
+        
     }
     
-    public void dfs(TreeNode root, HashMap<TreeNode, TreeNode> parent){
+    public void dfs(TreeNode root, Map<TreeNode, TreeNode> parent){
+        
         if(root == null) return;
         
         if(root.left != null) parent.put(root.left, root);
-         if(root.right != null) parent.put(root.right, root);
+           if(root.right != null) parent.put(root.right, root);
         
         dfs(root.left, parent);
-         dfs(root.right, parent);
+             dfs(root.right, parent);
     }
 }
